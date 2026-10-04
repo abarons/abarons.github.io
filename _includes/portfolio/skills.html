@@ -1,0 +1,130 @@
+<section id="skills" class="portfolio-section section">
+  <div class="section-header">
+    <div>
+      <h3>TECHNICAL SKILLS</h3>
+      <br>
+      <br>
+    </div>
+  </div>
+
+  <div class="skills-search-wrap">
+    <input
+      id="skillSearch"
+      class="skills-search"
+      type="search"
+      placeholder="Search by skill name or description..."
+      aria-label="Cerca skill"
+    />
+  </div>
+
+  {% assign grouped_skills = site.data.skills | group_by: "category" %}
+
+  <div class="skill-accordion">
+    {% for group in grouped_skills %}
+      {% assign group_order = group.items.first.order | plus: 0 %}
+      <details class="skill-category" data-order="{{ group_order }}" data-category="{{ group.name }}">
+        <summary>
+          <span class="skill-count">{{ group.items | size }}</span>
+          <span>{{ group.name }}</span>
+        </summary>
+
+        <div class="skill-category-panel">
+          <div class="skills-grid">
+            {% for skill in group.items %}
+              {% assign skill_level = skill.level | plus: 0 %}
+              <div class="skill-item" data-search="{{ skill.name | downcase }} {{ skill.description | downcase }}">
+                <div class="label">
+                  <h4>{{ skill.name }}</h4>
+                  <div class="stars" data-rating="{{ skill_level }}" aria-label="Livello {{ skill_level }} su 5 per {{ skill.name }}"></div>
+                </div>
+                <p>{{ skill.description }}</p>
+                <small>{{ skill.years }} anni</small>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </details>
+    {% endfor %}
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const searchInput = document.getElementById('skillSearch');
+      const categories = Array.from(document.querySelectorAll('.skill-category'));
+      const skillAccordion = document.querySelector('.skill-accordion');
+
+      if (skillAccordion && categories.length > 1) {
+        const orderedCategories = categories.slice().sort(function (a, b) {
+          return Number(a.dataset.order || 0) - Number(b.dataset.order || 0);
+        });
+
+        orderedCategories.forEach(function (category) {
+          skillAccordion.appendChild(category);
+        });
+      }
+
+      function renderStars() {
+        document.querySelectorAll('.stars').forEach(function (starsEl) {
+          const rating = Number(starsEl.dataset.rating || 0);
+          const rounded = Math.min(Math.max(rating, 0), 5);
+          const fullStars = Math.floor(rounded);
+          const hasHalfStar = rounded - fullStars >= 0.5;
+
+          starsEl.innerHTML = '';
+
+          for (let i = 0; i < 5; i += 1) {
+            const star = document.createElement('span');
+            star.className = 'star';
+
+            if (i < fullStars) {
+              star.classList.add('filled');
+            } else if (i === fullStars && hasHalfStar) {
+              star.classList.add('half');
+            } else {
+              star.classList.add('empty');
+            }
+
+            starsEl.appendChild(star);
+          }
+        });
+      }
+
+      function applyFilter() {
+        if (!searchInput) return;
+
+        const query = searchInput.value.trim().toLowerCase();
+
+        categories.forEach(function (category) {
+          const items = category.querySelectorAll('.skill-item');
+          let visibleCount = 0;
+
+          items.forEach(function (item) {
+            const haystack = (item.dataset.search || '').toLowerCase();
+            const matches = !query || haystack.includes(query);
+            item.hidden = !matches;
+            if (matches) visibleCount += 1;
+          });
+
+          const countEl = category.querySelector('.skill-count');
+          if (countEl) {
+            countEl.textContent = query ? visibleCount + '/' + items.length : items.length;
+          }
+
+          const hasVisibleItems = visibleCount > 0;
+          if (!query) {
+            category.open = false;
+            return;
+          }
+
+          category.open = hasVisibleItems;
+        });
+      }
+
+      if (!searchInput || !categories.length) return;
+
+      renderStars();
+      searchInput.addEventListener('input', applyFilter);
+      applyFilter();
+    });
+  </script>
+</section>

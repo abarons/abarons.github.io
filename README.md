@@ -13,7 +13,20 @@ This project is a single-page personal website for showcasing:
 - projects
 - contact information
 
-The site uses a custom dark theme, a sticky sidebar navigation, and data-driven skill sections managed through CSV files.
+The site uses a custom dark theme, a sticky sidebar navigation, and data-driven sections managed through Liquid templates and CSV files.
+
+## Security hardening
+
+The portfolio has been hardened to follow safer static-site practices:
+
+- added a Content Security Policy (CSP) in the HTML head
+- enabled Referrer-Policy, X-Content-Type-Options, and Permissions-Policy
+- removed external dependencies such as Google Fonts
+- moved JavaScript logic out of inline HTML into a dedicated file
+- replaced inline style attributes with CSS classes
+- added a security disclosure file at `.well-known/security.txt`
+
+These changes reduce browser-side risk and improve resilience for a static portfolio hosted on GitHub Pages.
 
 ## Tech Stack
 
@@ -22,6 +35,7 @@ The site uses a custom dark theme, a sticky sidebar navigation, and data-driven 
 - Liquid templates
 - Ruby / Bundler
 - CSV data files
+- HTML, CSS, JavaScript
 
 ## Local Development
 
@@ -68,7 +82,12 @@ This generates the static website into the `_site` folder.
 │   └── home.html
 ├── assets/
 │   ├── css/
-│   └── images/
+│   │   └── portfolio.css
+│   ├── images/
+│   └── js/
+│       └── site.js
+├── .well-known/
+│   └── security.txt
 ├── 404.html
 ├── Gemfile
 ├── index.markdown
@@ -85,7 +104,6 @@ This repository is intended to be published via GitHub Pages.
 
 - `main`: source code and content development
 - `gh-pages`: deployed static website used by GitHub Pages
-
 
 ## Skills Data
 
@@ -114,7 +132,12 @@ To update the site content:
 - update the CSV file in `_data/skills.csv`
 - modify the styling in `assets/css/portfolio.css`
 - adjust the layout in `_layouts/home.html`
+- add or update logic in `assets/js/site.js`
+
+## Security notes
+
+This site is a static portfolio and does not expose login, APIs, or user-generated content. The hardening efforts are focused on improving browser-level protections and reducing external runtime dependencies.
 
 ## License
 
-This project is intended for personal portfolio use
+This project is intended for personal portfolio use.

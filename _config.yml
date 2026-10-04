@@ -18,14 +18,14 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-#title: Barons Repository
-#email: 
-#description: >- # this means to ignore newlines until "baseurl:"
-#  Official Repository Barons Works. This is a personal website which I will share my work projects
+title: Andrea Barone | Data Platform Engineer
+#email:
+description: >-
+  Personal portfolio and professional profile of Andrea Barone, Data Platform Engineer.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://abarons.github.io" # the base hostname & protocol for your site
 #twitter_username: jekyllrb
-#github_username:  abarons
+#github_username: abarons
 
 # Build settings
 theme: minima

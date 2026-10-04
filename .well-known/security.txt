@@ -1,0 +1,3 @@
+Contact: https://github.com/abarons/abarons.github.io/issues
+Preferred-Languages: en, it
+Canonical: https://abarons.github.io/.well-known/security.txt

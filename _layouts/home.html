@@ -4,18 +4,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="{{ site.description | default: site.title }}" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; font-src 'self'; media-src 'self'; upgrade-insecure-requests" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()" />
+    <meta name="robots" content="index, follow" />
     <title>{{ page.title | default: site.title }}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{{ '/assets/css/portfolio.css' | relative_url }}" />
   </head>
   <body class="portfolio-body">
     <div class="portfolio-shell">
       <aside class="portfolio-sidebar">
         <div class="Profile-card">
-          <h1 style="text-align:center;">Andrea Barone</h1>
-          <p class="role" style="text-align:center;">Data Platform Engineer</p>
+          <h1 class="profile-name">Andrea Barone</h1>
+          <p class="role profile-role">Data Platform Engineer</p>
         </div>
 
         <nav class="side-nav" aria-label="Navigazione principale">
@@ -29,32 +31,32 @@
         </nav>
 
         <div class="sidebar-meta">
-        <p><strong>Location</strong><br/>
-            <span style="white-space: nowrap; display: inline-flex; align-items: center; gap: 5px;">
-            Italy <img src="{{ '/assets/images/Flag_of_Italy.svg' | relative_url }}" width="20" height="20" alt="Italian Flag" />
+          <p><strong>Location</strong><br/>
+            <span class="inline-chip">
+              Italy <img src="{{ '/assets/images/Flag_of_Italy.svg' | relative_url }}" width="20" height="20" alt="Italian Flag" />
             </span>
-        </p>
-        <p><strong>Focus</strong><br/>
-            <span style="white-space: nowrap; display: inline-flex; align-items: center; gap: 5px;">
-                   Microsoft <img src="{{ '/assets/images/microsoft.svg' | relative_url }}" width="20" height="20" alt="Microsoft"/>
-            </span>
-            <br/>
-            <span style="white-space: nowrap; display: inline-flex; align-items: center; gap: 5px;">
-            Azure <img src="{{ '/assets/images/azure.svg' | relative_url }}" width="20" height="20" alt="Azure"/>
+          </p>
+          <p><strong>Focus</strong><br/>
+            <span class="inline-chip">
+              Microsoft <img src="{{ '/assets/images/microsoft.svg' | relative_url }}" width="20" height="20" alt="Microsoft" />
             </span>
             <br/>
-            <span style="white-space: nowrap; display: inline-flex; align-items: center; gap: 5px;">
-            On Premise <img src="{{ '/assets/images/onpremise.svg' | relative_url }}" width="20" height="20" alt="On Premise"/>
+            <span class="inline-chip">
+              Azure <img src="{{ '/assets/images/azure.svg' | relative_url }}" width="20" height="20" alt="Azure" />
             </span>
             <br/>
-            <span style="white-space: nowrap; display: inline-flex; align-items: center; gap: 5px;">
-            Cloud <img src="{{ '/assets/images/cloud.svg' | relative_url }}" width="20" height="20" alt="Cloud"/>
+            <span class="inline-chip">
+              On Premise <img src="{{ '/assets/images/onpremise.svg' | relative_url }}" width="20" height="20" alt="On Premise" />
             </span>
             <br/>
-            <span style="white-space: nowrap; display: inline-flex; align-items: center; gap: 5px;">
-            Analytics <img src="{{ '/assets/images/analytics.svg' | relative_url }}" width="20" height="20" alt="Analytics"/>
+            <span class="inline-chip">
+              Cloud <img src="{{ '/assets/images/cloud.svg' | relative_url }}" width="20" height="20" alt="Cloud" />
             </span>
-        </p>
+            <br/>
+            <span class="inline-chip">
+              Analytics <img src="{{ '/assets/images/analytics.svg' | relative_url }}" width="20" height="20" alt="Analytics" />
+            </span>
+          </p>
         </div>
       </aside>
 
@@ -63,32 +65,6 @@
       </main>
     </div>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const navItems = document.querySelectorAll('.nav-item, .nav-trigger');
-        const sections = document.querySelectorAll('.portfolio-section');
-
-        function setActive(targetId) {
-          sections.forEach((section) => {
-            const isActive = section.id === targetId;
-            section.classList.toggle('is-active', isActive);
-          });
-
-          navItems.forEach((button) => {
-            button.classList.toggle('is-active', button.dataset.target === targetId);
-          });
-        }
-
-        navItems.forEach((button) => {
-          button.addEventListener('click', function () {
-            setActive(this.dataset.target);
-          });
-        });
-
-        if (sections.length) {
-          setActive(sections[0].id);
-        }
-      });
-    </script>
+    <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
   </body>
 </html>

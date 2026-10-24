@@ -1,120 +1,89 @@
-order,category,name,years,level,description
-1,Data Engineering,Azure Analysis Services,8,5,
-1,Data Engineering,Azure Blob Storage,8,5,
-1,Data Engineering,Azure Cosmos DB,5,1,
-1,Data Engineering,Azure Data Factory,8,5,
-1,Data Engineering,Azure Data Lake Storage,8,5,
-1,Data Engineering,Azure Database for MySQL,5,1,
-1,Data Engineering,Azure Database for PostgreSQL,5,1,
-1,Data Engineering,Azure Databricks,3,5,
-1,Data Engineering,Azure Files,5,5,
-1,Data Engineering,Azure IoT Hub,5,0.5,
-1,Data Engineering,Azure SQL Database,8,5,
-1,Data Engineering,Azure SQL Managed Instance,8,3,
-1,Data Engineering,Azure Stream Analytics,5,1,
-1,Data Engineering,Azure Synapse Analytics,8,5,
-1,Data Engineering,Event Hubs,7,1,
-1,Data Engineering,Logic Apps,7,1,
-1,Data Engineering,MySQL,5,1,
-1,Data Engineering,MySQL Workbench,5,1,
-1,Data Engineering,Oracle,3,0.5,
-1,Data Engineering,pgAdmin,5,1,
-1,Data Engineering,pgSQL,5,0.5,
-1,Data Engineering,PL/SQL,3,0.5,
-1,Data Engineering,PostgreSQL,5,0.5,
-1,Data Engineering,Python,7,3,
-1,Data Engineering,Spark SQL,3,5,
-1,Data Engineering,Spyder,6,2,
-1,Data Engineering,SQL Server,10,4,
-1,Data Engineering,SQL Server Analysis Services,10,5,
-1,Data Engineering,SQL Server Integration Services,10,4,
-1,Data Engineering,SQL Server Management Studio,10,5,
-1,Data Engineering,SQLite,8,1,
-1,Data Engineering,Storage Accounts,8,5,
-1,Data Engineering,Storage Explorer,8,4,
-1,Data Engineering,T-SQL,10,5,
-1,Data Engineering,Visual Studio,10,3,
-1,Data Engineering,Visual Studio Code,7,4,
-1,Data Engineering,dbt,3,3,
-1,Data Engineering,Delta Lake,3,5,
-1,Data Engineering,Unity Catalog,3,3,
-1,Data Engineering,Data Lakehouse Architectures,3,4,
-1,Data Engineering,Data Warehouse Architectures,10,5,
-1,Data Engineering,App Service,5,1,
-1,Data Engineering,Azure DevOps,3,3,
-1,Data Engineering,Azure Functions,5,1,
-1,Data Engineering,Azure Pipelines,3,1,
-1,Data Engineering,Azure Repos,3,3,
-1,Data Engineering,C,10,2,
-1,Data Engineering,C#,5,0.5,
-1,Data Engineering,C++,10,0.5,
-1,Data Engineering,GitHub Copilot,2,3,
-1,Data Engineering,HDInsight,7,0.5,
-1,Data Engineering,Java,10,0.5,
-2,Data Analysis,D365 Finance & Operations,7,4,
-2,Data Analysis,Data Catalog,7,0.5,
-2,Data Analysis,DAX,10,3,
-2,Data Analysis,Dynamics AX,8,4,
-2,Data Analysis,Dynamics NAV,10,4,
-2,Data Analysis,Event Grid,7,1,
-2,Data Analysis,Excel,10,5,
-2,Data Analysis,Fabric,3,2,
-2,Data Analysis,M,7,4,
-2,Data Analysis,Power BI Desktop,10,5,
-2,Data Analysis,Power BI Embedded,7,3,
-2,Data Analysis,Power BI Paginated Reports,7,4,
-2,Data Analysis,Power Pivot,10,5,
-2,Data Analysis,Power Query,10,5,
-2,Data Analysis,Salesforce,3,3,
-2,Data Analysis,SQL Server Reporting Services,10,3,
-2,Data Analysis,Toad For Oracle,3,0.5,
-2,Data Analysis,VBA,10,2.5,
-3,Cloud Engineering,Active Directory,7,3,
-3,Cloud Engineering,Automation,8,3.5,
-3,Cloud Engineering,Azure Application Gateway,5,0.5,
-3,Cloud Engineering,Azure Bastion,5,0.5,
-3,Cloud Engineering,Azure Database Migration Service,5,1,
-3,Cloud Engineering,Azure DNS,5,3,
-3,Cloud Engineering,Azure ExpressRoute,5,0.5,
-3,Cloud Engineering,Azure Firewall,5,0.5,
-3,Cloud Engineering,Azure IAM & RBAC,5,5,
-3,Cloud Engineering,Azure Key Vault,8,4,
-3,Cloud Engineering,Azure Load Balancer,5,2,
-3,Cloud Engineering,Azure Migrate,5,0.5,
-3,Cloud Engineering,Azure Private Link,5,3,
-3,Cloud Engineering,Azure Virtual Desktop,5,0.5,
-3,Cloud Engineering,Azure Virtual Network,5,3,
-3,Cloud Engineering,Azure VPN Gateway,5,1.5,
-3,Cloud Engineering,Azure Web Application Firewall,5,0.5,
-3,Cloud Engineering,Bash,8,3,
-3,Cloud Engineering,Cloud Shell,8,3,
-3,Cloud Engineering,IBM Cognos Analytics,3,3,
-3,Cloud Engineering,Microsoft Azure portal,8,5,
-3,Cloud Engineering,Microsoft Cost Management,8,5,
-3,Cloud Engineering,Microsoft Defender for Cloud,5,1,
-3,Cloud Engineering,Microsoft Entra Domain Services,5,3,
-3,Cloud Engineering,Microsoft Entra ID (formerly Azure AD),5,4,
-3,Cloud Engineering,Microsoft Purview,5,0.5,
-3,Cloud Engineering,Power BI Premium,8,5,
-3,Cloud Engineering,Power BI Report Server,10,5,
-3,Cloud Engineering,Power BI Service,10,5,
-3,Cloud Engineering,PowerShell,7,3,
-3,Cloud Engineering,Virtual Machines,7,3,
-3,Cloud Engineering,Windows Server,8,3,
-4,Data Science,Deep Learning ,7,3,
-4,Data Science,Generative AI,2,2.5,
-4,Data Science,Machine Learning,10,4,
-4,Data Science,MATLAB,10,2,
-4,Data Science,R,10,4,
-4,Data Science,R Server,10,3,
-4,Data Science,Rstudio,10,5,
-4,Data Science,Shiny Server,8,2,
-4,Data Science,Supervised Machine Learning,10,4,
-4,Data Science,Unsupervised Machine Learning,10,5,
-4,Data Science,Deep Learning ,7,3,
-4,Data Science,Azure Machine Learning,8,3,
-5,AI Engineering,Azure AI Services,7,3,
-5,AI Engineering,Microsoft AI Foundry,2,2,
-5,AI Engineering,Ollama ,2,2,
-5,AI Engineering,Hugging Face,2,1,
-5,AI Engineering,Vector DB,2,1,
+order,category,name,level,description,icon
+3,Cloud Engineering,Active Directory,3,Windows directory service for centralized identities groups computers authentication and domain policies.,/assets/images/microsoft.svg
+1,Data Engineering,Azure App Service,2,Managed platform for hosting web applications APIs and backend services with deployment and scaling features.,/assets/skills/azure-app-service.svg
+5,AI Engineering,Azure AI Services,3,Managed APIs for adding vision speech language and decision capabilities to applications.,/assets/skills/azure-ai-services.svg
+1,Data Engineering,Azure Analysis Services,5,Cloud analytical modeling service for tabular models queried by Power BI Excel and other clients.,/assets/skills/azure-analysis-services.svg
+3,Cloud Engineering,Azure Automation,4,Cloud automation service for runbooks configuration management and scheduled operational tasks.,/assets/skills/azure-automation.svg
+1,Data Engineering,Azure Blob Storage,5,Object storage for unstructured data with containers lifecycle policies and tiered access.,/assets/skills/azure-blob-storage.svg
+1,Data Engineering,Azure Cosmos DB,"0,5",Globally distributed NoSQL database with multiple APIs low-latency reads and configurable consistency.,/assets/skills/azure-cosmos-db.svg
+1,Data Engineering,Azure Data Factory,4,Cloud ETL and ELT service for building data integration pipelines and orchestrating movement and transformation.,/assets/skills/azure-data-factory.svg
+1,Data Engineering,Azure Data Lake Storage Gen 2,5,Analytics storage built on Blob Storage with hierarchical namespaces and fine-grained access control.,/assets/images/azure.svg
+1,Data Engineering,Azure Database for MySQL,1,Managed MySQL database service with automated backups patching monitoring and high availability.,/assets/skills/mysql.svg
+1,Data Engineering,Azure Database for PostgreSQL,1,Managed PostgreSQL database service with automated maintenance backups and scalable compute.,/assets/skills/postgresql.svg
+3,Cloud Engineering,Azure Database Migration Service,3,Service for assessing and migrating database workloads to Azure with reduced downtime.,/assets/skills/azure-db-migration.svg
+1,Data Engineering,Azure Databricks,5,Cloud lakehouse platform for Apache Spark engineering analytics machine learning and collaborative notebooks.,/assets/skills/databricks.svg
+1,Data Engineering,Azure DevOps,"2,5",Development platform providing Git repositories CI/CD pipelines boards test plans and artifacts.,/assets/skills/azuredevops.svg
+3,Cloud Engineering,Azure DNS,3,Hosting service for public and private DNS zones and domain name record resolution.,/assets/skills/azure-dns.svg
+1,Data Engineering,Azure File Share,4,Managed SMB or NFS file shares for shared application and enterprise workloads.,/assets/skills/azure-files.svg
+1,Data Engineering,Azure Functions,"1,5",Serverless compute for event-driven code with managed triggers bindings and scaling.,/assets/skills/azure-functions.svg
+3,Cloud Engineering,Azure IAM & RBAC,4,Identity and access controls that assign least-privilege roles across Azure resource scopes.,/assets/skills/entra-roles.svg
+1,Data Engineering,Azure IoT Hub,1,Managed IoT message broker for secure device connectivity telemetry and command delivery.,/assets/skills/azure-iot-hub.svg
+3,Cloud Engineering,Azure Key Vault,"3,5",Secure store for application secrets encryption keys and certificates with access policies.,/assets/skills/azure-key-vault.svg
+3,Cloud Engineering,Azure Load Balancer,3,Layer four load balancing for distributing TCP and UDP traffic across healthy backends.,/assets/skills/azure-load-balancer.svg
+4,Data Science,Azure Machine Learning,"3,5",End-to-end platform for preparing data training tracking registering and deploying machine learning models.,/assets/skills/azure-machine-learning.svg
+3,Cloud Engineering,Azure Private Link,"3,5",Private network connectivity to Azure services through private endpoints and virtual networks.,/assets/skills/azure-private-link.svg
+1,Data Engineering,Azure SQL Database,4,Managed relational database service based on the SQL Server engine with built-in resilience and scaling.,/assets/skills/azure-sql-database.svg
+1,Data Engineering,Azure SQL Managed Instance,3,Managed SQL Server instance offering broad engine compatibility for cloud migration and operations.,/assets/skills/azure-sql-managed-instance.svg
+1,Data Engineering,Azure Storage Account,5,Azure resource providing durable storage services for blobs files queues tables and disks.,/assets/skills/azure-storage.svg
+1,Data Engineering,Azure Stream Analytics,1,Real-time stream processing service for filtering aggregating and routing event data with SQL.,/assets/skills/azure-stream-analytics.svg
+1,Data Engineering,Azure Synapse Analytics,4,Analytics platform combining SQL data warehousing Spark processing and data integration.,/assets/skills/azure-synapse.svg
+3,Cloud Engineering,Azure Virtual Machine,3,IaaS compute instance for running and managing Windows or Linux workloads in Azure.,/assets/skills/azure-virtual-machine.svg
+3,Cloud Engineering,Azure Virtual Network,3,Private network boundary for Azure resources with subnets routing and network security controls.,/assets/skills/azure-virtual-network.svg
+3,Cloud Engineering,Bash,3,Unix shell and scripting language for command-line workflows automation and system administration.,/assets/skills/gnubash.svg
+1,Data Engineering,C,"1,5",Compiled general-purpose language used to build system software libraries and performance-sensitive applications.,/assets/skills/c.svg
+3,Cloud Engineering,Azure Cloud Shell,3,Browser-based shell environment with Azure CLI PowerShell and authenticated access to Azure resources.,/assets/skills/azure-cloud-shell.svg
+1,Data Engineering,Data Lakehouse Architectures,4,Data platform design combining lake-scale open storage with warehouse-style governance and analytics.,/assets/images/analytics.svg
+1,Data Engineering,Data Warehouse Architectures,4,Structured analytical data platforms using dimensional models governed storage and workload-oriented serving.,/assets/skills/microsoftsqlserver.svg
+1,Data Engineering,Databricks Unity Catalog,4,Central governance layer for permissions discovery lineage and auditing across Databricks data assets.,/assets/skills/databricks.svg
+2,Data Analysis,DAX,3,Formula language for defining measures calculated columns and analytical logic in tabular models.,/assets/skills/power-bi.svg
+1,Data Engineering,dbt,"3,5",SQL-based transformation framework for modular models testing documentation and dependency management.,/assets/skills/databricks.svg
+4,Data Science,Deep Learning,2,Machine learning approach using multi-layer neural networks to learn representations from complex data.,/assets/skills/tensorflow.svg
+1,Data Engineering,Delta Lake,4,Open table format adding ACID transactions schema enforcement and version history to data lakes.,/assets/skills/databricks.svg
+2,Data Analysis,Microsoft Dynamics AX,"3,5",Enterprise resource planning system for finance supply chain manufacturing and operations.,/assets/skills/dynamics365.svg
+2,Data Analysis,Microsoft Dynamics NAV,"3,5",ERP platform for small and midsize organizations covering finance inventory and business operations.,/assets/skills/dynamics365.svg
+2,Data Engineering,Azure Event Grid,1,Event routing service that delivers notifications from Azure resources and custom applications.,/assets/skills/azure-event-grid.svg
+1,Data Engineering,Azure Event Hubs,1,High-throughput event ingestion service for streaming telemetry logs and application events.,/assets/skills/azure-event-hubs.svg
+2,Data Analysis,Excel,5,Spreadsheet application for formulas pivot analysis charts data preparation and business reporting.,/assets/images/microsoft.svg
+2,Data Analysis,Microsoft Fabric,3,Unified SaaS analytics platform integrating data engineering data science warehousing and Power BI.,/assets/skills/microsoft-fabric.svg
+4,AI Engineering,Generative AI,3,AI systems that generate text images code or other content from prompts and learned patterns.,/assets/skills/huggingface.svg
+1,Data Engineering,Git,"2,5",Distributed version control system for tracking changes branching merging and collaborative development.,/assets/skills/git.svg
+5,AI Engineering,Hugging Face,"2,5",Platform and tooling for discovering sharing fine-tuning and deploying machine learning models and datasets.,/assets/skills/huggingface.svg
+3,Cloud Engineering,IBM Cognos Analytics (IaaS),"3,5",Business intelligence platform for governed reporting dashboards data exploration and enterprise analytics.,/assets/images/analytics.svg
+1,Data Engineering,Java,"1,5",Object-oriented programming language and runtime ecosystem for enterprise applications and data services.,/assets/skills/java.svg
+1,Data Engineering,Azure Logic Apps,"1,5",Low-code workflow service for integrating applications data sources and event-driven processes.,/assets/skills/azure-logic-apps.svg
+2,Data Analysis,M,4,Power Query formula language for expressing data transformations and reusable query logic.,/assets/skills/power-bi.svg
+4,Data Science,Machine Learning,4,Methods that learn patterns from data to make predictions classifications or decisions.,/assets/skills/scikitlearn.svg
+4,Data Science,MATLAB,3,Numerical computing environment for data analysis simulation algorithm development and visualization.,/assets/skills/matlab.svg
+5,AI Engineering,Microsoft AI Foundry,"2,5",Platform for building evaluating and governing generative AI applications and model deployments.,/assets/skills/azure-ai-foundry.svg
+3,Cloud Engineering,Azure Cost Management,4,Cloud financial management tools for analyzing usage setting budgets and identifying optimization opportunities.,/assets/skills/azure-cost-management.svg
+2,Data Analysis,Microsoft D365 Finance & Operations,4,ERP applications for financial management supply chain manufacturing and business processes.,/assets/skills/dynamics-finance-operations.svg
+3,Cloud Engineering,Microsoft Entra Domain Services,3,Managed domain services providing LDAP Kerberos domain join and group policy without domain controllers.,/assets/skills/entra-domain-services.svg
+3,Cloud Engineering,Microsoft Entra ID (formerly Azure AD),"3,5",Cloud identity provider for authentication single sign-on conditional access and application access.,/assets/skills/entra-roles.svg
+3,Cloud Engineering,Microsoft Purview,"0,5",Data governance platform for cataloging classification lineage and managing compliance across data estates.,/assets/skills/microsoft-purview.svg
+1,Data Engineering,MySQL,1,Open-source relational database system used for transactional applications and structured data.,/assets/skills/mysql.svg
+5,AI Engineering,Ollama,"2,5",Tool for running and managing large language models locally through a simple API and CLI.,/assets/skills/ollama.svg
+1,Data Engineering,Oracle,1,Relational database platform for transactional systems SQL workloads and enterprise data management.,/assets/skills/oracle.svg
+1,Data Engineering,PostgreSQL,1,Open-source relational database with SQL support extensibility and advanced data types.,/assets/skills/postgresql.svg
+2,Data Analysis,Power BI Desktop,5,Authoring tool for connecting to data building semantic models and creating interactive reports.,/assets/skills/power-bi.svg
+2,Data Analysis,Power BI Embedded,"1,5",Azure service for embedding Power BI reports and dashboards into custom applications.,/assets/skills/power-bi.svg
+2,Data Analysis,Power BI Paginated Reports,3,Pixel-perfect report format for printable documents and parameterized operational reporting.,/assets/skills/power-bi.svg
+3,Cloud Engineering,Power BI Premium Capacity,5,Dedicated compute capacity for scalable Power BI workloads and enterprise content distribution.,/assets/skills/power-bi.svg
+3,Cloud Engineering,Power BI Report Server,4,On-premises report server for hosting Power BI reports and paginated reporting content.,/assets/skills/power-bi.svg
+3,Cloud Engineering,Power BI Service,5,Cloud service for publishing sharing refreshing and governing Power BI reports and semantic models.,/assets/skills/power-bi.svg
+2,Data Analysis,Power Pivot,5,Excel data modeling engine for relationships measures and DAX-based analysis.,/assets/skills/power-bi.svg
+2,Data Analysis,Power Query,5,ETL technology for connecting cleaning combining and loading data from multiple sources.,/assets/skills/power-bi.svg
+3,Cloud Engineering,PowerShell,3,Cross-platform shell and scripting language for automation administration and infrastructure management.,/assets/skills/powershell.svg
+1,Data Engineering,Python,"3,5",General-purpose language widely used for data pipelines automation APIs and machine learning.,/assets/skills/python.svg
+4,Data Science,R,4,Statistical programming language and environment for data analysis modeling and visualization.,/assets/skills/r.svg
+4,Data Science,R Server,3,Enterprise deployment and execution environment for scalable R analytics workloads.,/assets/skills/r.svg
+2,Data Analysis,Salesforce,"3,5",Cloud CRM platform for managing customer data sales processes service workflows and integrations.,/assets/skills/salesforce.svg
+1,Data Engineering,SQL Server Analysis Services,5,Microsoft analytical engine for tabular or multidimensional semantic models and measures.,/assets/skills/microsoftsqlserver.svg
+1,Data Engineering,SQL Server Database Engine,"4,5",Relational database engine for storing querying securing and processing structured data with T-SQL.,/assets/skills/microsoftsqlserver.svg
+1,Data Engineering,SQL Server Integration Services,"3,5",ETL platform for extracting transforming and loading data through package-based workflows.,/assets/skills/microsoftsqlserver.svg
+2,Data Analysis,SQL Server Reporting Services,3,Server-based reporting platform for parameterized paginated reports and scheduled delivery.,/assets/skills/microsoftsqlserver.svg
+4,Data Science,Supervised Machine Learning,4,Model training approach that learns prediction rules from labeled examples.,/assets/skills/scikitlearn.svg
+1,Data Engineering,T-SQL,"4,5",SQL Server dialect for querying data and implementing procedural database logic.,/assets/skills/microsoftsqlserver.svg
+4,Data Science,Unsupervised Machine Learning,4,Modeling approach that discovers clusters structure and relationships in unlabeled data.,/assets/skills/scikitlearn.svg
+2,Data Analysis,VBA,2,Visual Basic for Applications scripting used to automate Excel tasks and build Office solutions.,/assets/images/microsoft.svg
+5,AI Engineering,Vector DB,"2,5",Database optimized for storing embeddings and retrieving semantically similar vectors for search and RAG.,/assets/skills/redis.svg
+3,Cloud Engineering,Windows Server,"3,5",Microsoft server operating system for identity file services virtualization and enterprise workloads.,/assets/skills/windows8.svg

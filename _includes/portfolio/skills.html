@@ -7,6 +7,21 @@
     </div>
   </div>
 
+  <div class="expertise-summary" aria-label="Expertise overview">
+    <div class="expertise-tier">
+      <span class="kicker">Core expertise</span>
+      <p><strong>Data Engineering</strong><br />Data Analysis</p>
+    </div>
+    <div class="expertise-tier">
+      <span class="kicker">Advanced expertise</span>
+      <p><strong>Cloud Engineering</strong><br />Data Science</p>
+    </div>
+    <div class="expertise-tier">
+      <span class="kicker">Working expertise</span>
+      <p><strong>AI Engineering</strong></p>
+    </div>
+  </div>
+
   <div class="skills-search-wrap">
     <input
       id="skillSearch"
@@ -15,6 +30,31 @@
       placeholder="Search by skill name or description..."
       aria-label="Cerca skill"
     />
+  </div>
+
+  <div class="skills-filters">
+    <label>
+      <span>Sort by</span>
+      <select id="skillSort" class="skills-control">
+        <option value="level-desc">Level: high to low</option>
+        <option value="level-asc">Level: low to high</option>
+        <option value="name-asc">Name: A to Z</option>
+        <option value="name-desc">Name: Z to A</option>
+      </select>
+    </label>
+    <label>
+      <span>Level filter</span>
+      <select id="skillLevelOperator" class="skills-control" aria-label="Level comparison">
+        <option value="any">Any level</option>
+        <option value="gte">At least (≥)</option>
+        <option value="lte">At most (≤)</option>
+        <option value="eq">Exactly (=)</option>
+      </select>
+    </label>
+    <label>
+      <span>Rating (0–5)</span>
+      <input id="skillLevelValue" class="skills-control" type="number" min="0" max="5" step="0.5" value="3" aria-label="Rating to compare" />
+    </label>
   </div>
 
   {% assign grouped_skills = site.data.skills | group_by: "category" %}
@@ -31,14 +71,22 @@
         <div class="skill-category-panel">
           <div class="skills-grid">
             {% for skill in group.items %}
-              {% assign skill_level = skill.level | plus: 0 %}
-              <div class="skill-item" data-search="{{ skill.name | downcase }} {{ skill.description | downcase }}">
+              {% assign skill_level = skill.level | replace: ',', '.' | plus: 0 %}
+              {% assign skill_level_band = 'growing' %}
+              {% if skill_level >= 4 %}
+                {% assign skill_level_band = 'master' %}
+              {% elsif skill_level >= 2.5 %}
+                {% assign skill_level_band = 'advanced' %}
+              {% endif %}
+              <div class="skill-item skill-level-{{ skill_level_band }}" data-name="{{ skill.name | downcase | escape }}" data-rating="{{ skill_level }}" data-search="{{ skill.name | downcase | escape }} {{ skill.description | downcase | escape }}">
                 <div class="label">
-                  <h4>{{ skill.name }}</h4>
-                  <div class="stars" data-rating="{{ skill_level }}" aria-label="Livello {{ skill_level }} su 5 per {{ skill.name }}"></div>
+                  <div class="skill-name">
+                    <img class="skill-icon" src="{{ skill.icon | relative_url }}" alt="" loading="lazy" />
+                    <h4>{{ skill.name }}</h4>
+                  </div>
+                  <div class="stars" data-rating="{{ skill_level }}" role="img" aria-label="Rating {{ skill_level }} su 5 per {{ skill.name }}"></div>
                 </div>
                 <p>{{ skill.description }}</p>
-                <small>{{ skill.years }} anni</small>
               </div>
             {% endfor %}
           </div>

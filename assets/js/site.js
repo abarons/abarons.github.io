@@ -26,6 +26,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   const searchInput = document.getElementById('skillSearch');
+  const sortSelect = document.getElementById('skillSort');
+  const operatorSelect = document.getElementById('skillLevelOperator');
+  const levelInput = document.getElementById('skillLevelValue');
   const categories = Array.from(document.querySelectorAll('.skill-category'));
   const skillAccordion = document.querySelector('.skill-accordion');
 
@@ -65,40 +68,64 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  function applyFilter() {
-    if (!searchInput) return;
+  function sortSkills() {
+    if (!sortSelect) return;
 
-    const query = searchInput.value.trim().toLowerCase();
+    document.querySelectorAll('.skills-grid').forEach(function (grid) {
+      const items = Array.from(grid.querySelectorAll('.skill-item'));
+      items.sort(function (a, b) {
+        const nameA = a.dataset.name || '';
+        const nameB = b.dataset.name || '';
+        const ratingA = Number(a.dataset.rating || 0);
+        const ratingB = Number(b.dataset.rating || 0);
 
-    categories.forEach(function (category) {
-      const items = category.querySelectorAll('.skill-item');
-      let visibleCount = 0;
-
-      items.forEach(function (item) {
-        const haystack = (item.dataset.search || '').toLowerCase();
-        const matches = !query || haystack.includes(query);
-        item.hidden = !matches;
-        if (matches) visibleCount += 1;
+        if (sortSelect.value === 'name-asc') return nameA.localeCompare(nameB);
+        if (sortSelect.value === 'name-desc') return nameB.localeCompare(nameA);
+        if (sortSelect.value === 'level-asc') return ratingA - ratingB || nameA.localeCompare(nameB);
+        return ratingB - ratingA || nameA.localeCompare(nameB);
       });
-
-      const countEl = category.querySelector('.skill-count');
-      if (countEl) {
-        countEl.textContent = query ? visibleCount + '/' + items.length : items.length;
-      }
-
-      const hasVisibleItems = visibleCount > 0;
-      if (!query) {
-        category.open = false;
-        return;
-      }
-
-      category.open = hasVisibleItems;
+      items.forEach(function (item) { grid.appendChild(item); });
     });
   }
 
-  if (searchInput && categories.length) {
+  function applySkillFilters() {
+    if (!searchInput || !operatorSelect || !levelInput) return;
+
+    const query = searchInput.value.trim().toLowerCase();
+    const operator = operatorSelect.value;
+    const targetRating = Number(levelInput.value);
+    const filtering = Boolean(query) || operator !== 'any';
+
+    categories.forEach(function (category) {
+      const items = Array.from(category.querySelectorAll('.skill-item'));
+      let visibleCount = 0;
+
+      items.forEach(function (item) {
+        const textMatches = (item.dataset.search || '').includes(query);
+        const rating = Number(item.dataset.rating || 0);
+        const levelMatches = operator === 'any'
+          || (operator === 'gte' && rating >= targetRating)
+          || (operator === 'lte' && rating <= targetRating)
+          || (operator === 'eq' && rating === targetRating);
+        item.hidden = !(textMatches && levelMatches);
+        if (!item.hidden) visibleCount += 1;
+      });
+
+      category.hidden = visibleCount === 0;
+      const count = category.querySelector('.skill-count');
+      if (count) count.textContent = filtering ? visibleCount + '/' + items.length : items.length;
+      if (filtering && visibleCount > 0) category.open = true;
+      else if (!filtering) category.open = false;
+    });
+  }
+
+  if (categories.length && searchInput && sortSelect && operatorSelect && levelInput) {
     renderStars();
-    searchInput.addEventListener('input', applyFilter);
-    applyFilter();
+    sortSkills();
+    applySkillFilters();
+    searchInput.addEventListener('input', applySkillFilters);
+    operatorSelect.addEventListener('change', applySkillFilters);
+    levelInput.addEventListener('input', applySkillFilters);
+    sortSelect.addEventListener('change', sortSkills);
   }
 });

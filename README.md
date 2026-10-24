@@ -17,16 +17,17 @@ The site uses a custom dark theme, a sticky sidebar navigation, and data-driven 
 
 ## Security hardening
 
-The portfolio has been hardened to follow safer static-site practices:
+The portfolio follows safer static-site practices:
 
-- added a Content Security Policy (CSP) in the HTML head
-- enabled Referrer-Policy, X-Content-Type-Options, and Permissions-Policy
+- applies a Content Security Policy (CSP) and Referrer Policy using HTML meta tags
 - removed external dependencies such as Google Fonts
 - moved JavaScript logic out of inline HTML into a dedicated file
 - replaced inline style attributes with CSS classes
 - added a security disclosure file at `.well-known/security.txt`
 
-These changes reduce browser-side risk and improve resilience for a static portfolio hosted on GitHub Pages.
+GitHub Pages branch-based hosting does not let this repository set arbitrary HTTP response headers. As a result, policies that
+must be sent as HTTP headers (such as `X-Content-Type-Options`, `Permissions-Policy`, and CSP `frame-ancestors`) are not enabled
+by this site. The CSP uses directives supported by an HTML meta policy.
 
 ## Tech Stack
 
@@ -98,12 +99,17 @@ This generates the static website into the `_site` folder.
 
 ## GitHub Pages Deployment
 
-This repository is intended to be published via GitHub Pages.
+The `main` branch is both the source and deployment branch. The repository is the user site `abarons.github.io`, so the site is
+published from the root of the branch and `_config.yml` correctly uses an empty `baseurl`.
 
-### Recommended branch strategy
+To configure or verify publishing in GitHub:
 
-- `main`: source code and content development
-- `gh-pages`: deployed static website used by GitHub Pages
+1. Open the repository **Settings → Pages**.
+2. Under **Build and deployment**, select **Deploy from a branch**.
+3. Select the `main` branch and the `/ (root)` folder, then save.
+4. Push changes to `main`; GitHub Pages builds and publishes the site.
+
+The generated `_site` directory is only for local builds and is ignored by Git; do not commit it for this publishing method.
 
 ## Skills Data
 

@@ -24,7 +24,13 @@ html {
 body {
   margin: 0;
   font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  background: #121212;
+  background-color: #121212;
+  background-image:
+    linear-gradient(rgba(13, 13, 13, 0.42), rgba(13, 13, 13, 0.52)),
+    url("../images/tech-data-center.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
   color: var(--text);
 }
 
@@ -39,6 +45,11 @@ img {
 
 .hero-title {
   margin-bottom: 1rem;
+}
+
+.profile-intro {
+  font-size: 1.08rem;
+  color: var(--text);
 }
 
 .profile-name {
@@ -105,16 +116,15 @@ p {
 
 .portfolio-body {
   min-height: 100vh;
-  padding: 40px 20px;
+  padding: 0;
 }
 
 .portfolio-shell {
-  max-width: 1480px;
-  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
   display: grid;
-  grid-template-columns: 300px minmax(0, 1fr);
-  gap: 28px;
-  align-items: start;
+  grid-template-columns: clamp(250px, 22vw, 320px) minmax(0, 1fr);
+  gap: 0;
 }
 
 .portfolio-sidebar,
@@ -132,11 +142,16 @@ p {
 
 .portfolio-sidebar {
   position: sticky;
-  top: 24px;
-  border-radius: 22px;
-  padding: 22px 18px;
-  background: #171717;
-  backdrop-filter: blur(8px);
+  top: 0;
+  height: 100vh;
+  min-height: 100vh;
+  padding: 28px 22px;
+  border: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0;
+  background: rgba(17, 17, 17, 0.58);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .profile-card {
@@ -209,13 +224,21 @@ p {
 .portfolio-main {
   display: grid;
   width: 100%;
+  min-width: 0;
+  min-height: 100vh;
 }
 
 .portfolio-section {
   display: none;
-  min-height: 640px;
-  border-radius: 28px;
-  padding: 20px;
+  width: 100%;
+  min-height: 100vh;
+  border: 0;
+  border-radius: 0;
+  padding: clamp(28px, 4vw, 60px);
+  background: rgba(20, 20, 20, 0.28);
+  box-shadow: none;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .portfolio-section.is-active {
@@ -223,9 +246,11 @@ p {
 }
 
 .hero {
-  border-radius: 28px;
-  padding: 28px;
-  background: #1a1a1a;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .hero-line {
@@ -342,6 +367,46 @@ p {
   font-size: clamp(1.5rem, 2vw, 2.1rem);
 }
 
+.section-summary {
+  max-width: 92ch;
+  margin: 0 auto 26px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-summary p {
+  margin: 0;
+}
+
+.career-summary-title {
+  margin: 0 0 12px;
+  text-align: center;
+  font-size: 1.35rem;
+}
+
+.expertise-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin: 0 0 24px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.expertise-tier + .expertise-tier {
+  padding-left: 20px;
+  border-left: 1px solid var(--line);
+}
+
+.expertise-tier .kicker {
+  margin-bottom: 8px;
+}
+
+.expertise-tier p {
+  margin: 0;
+}
+
 .timeline {
   display: grid;
   gap: 16px;
@@ -405,6 +470,38 @@ p {
 
 .skills-search::placeholder {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.skills-filters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 20px;
+}
+
+.skills-filters label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.skills-control {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #202020;
+  color: var(--text);
+  font: inherit;
+}
+
+.skills-control:focus-visible,
+.skills-search:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
 }
 
 .skill-accordion {
@@ -476,6 +573,18 @@ p {
   border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
+.skill-level-master {
+  border-left: 3px solid #f2c777;
+}
+
+.skill-level-advanced {
+  border-left: 3px solid #64cdb5;
+}
+
+.skill-level-growing {
+  border-left: 3px solid #e79a78;
+}
+
 .skill-item .label {
   display: flex;
   align-items: center;
@@ -484,29 +593,40 @@ p {
   gap: 10px;
 }
 
+.skill-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.skill-icon {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  padding: 4px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.94);
+  object-fit: contain;
+}
+
 .skill-item h4 {
   margin: 0;
   font-size: 1rem;
 }
 
-.skill-item small {
-  display: inline-block;
-  margin-top: 10px;
-  color: var(--accent-strong);
-  font-weight: 600;
-}
-
 .stars {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 3px;
   line-height: 1;
+  flex: 0 0 auto;
 }
 
 .star {
   position: relative;
   display: inline-block;
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1;
   color: rgba(148, 163, 184, 0.35);
 }
@@ -520,11 +640,44 @@ p {
   text-shadow: 0 0 10px rgba(215, 198, 168, 0.2);
 }
 
+.skill-level-advanced .star.filled {
+  color: #80e0ca;
+}
+
+.skill-level-growing .star.filled {
+  color: #f2aa8a;
+}
+
 .star.half {
   background: linear-gradient(90deg, var(--accent-strong) 0 50%, rgba(148, 163, 184, 0.35) 50% 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.skill-level-advanced .star.half {
+  background-image: linear-gradient(90deg, #80e0ca 0 50%, rgba(148, 163, 184, 0.35) 50% 100%);
+}
+
+.skill-level-growing .star.half {
+  background-image: linear-gradient(90deg, #f2aa8a 0 50%, rgba(148, 163, 184, 0.35) 50% 100%);
+}
+
+@media (max-width: 700px) {
+  .skills-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .expertise-summary {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .expertise-tier + .expertise-tier {
+    padding: 14px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
 }
 
 .cert-grid,
@@ -553,7 +706,25 @@ p {
   font-weight: 800;
 }
 
-.cert-card h4,
+.cert-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.cert-badge-icon {
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+  object-fit: contain;
+}
+
+.cert-card h4 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
 .project-card h4 {
   margin: 18px 0 10px;
   font-size: 1.1rem;
@@ -627,7 +798,68 @@ p {
   }
 
   .portfolio-sidebar {
-    position: static;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: minmax(190px, 0.34fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 8px 20px;
+    height: auto;
+    min-height: 0;
+    padding: 12px 22px 8px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .portfolio-sidebar .Profile-card {
+    padding: 0;
+    border: 0;
+    text-align: left;
+  }
+
+  .portfolio-sidebar .profile-name,
+  .portfolio-sidebar .profile-role {
+    text-align: left;
+  }
+
+  .portfolio-sidebar .profile-name {
+    font-size: 1.35rem;
+  }
+
+  .portfolio-sidebar .profile-role {
+    margin-top: 2px;
+    font-size: 0.88rem;
+  }
+
+  .side-nav {
+    grid-column: 2;
+    display: flex;
+    gap: 6px;
+    min-width: 0;
+    padding: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+  }
+
+  .nav-item {
+    width: auto;
+    flex: 0 0 auto;
+    padding: 9px 11px;
+    white-space: nowrap;
+  }
+
+  .sidebar-meta {
+    display: none;
+  }
+
+  .portfolio-main {
+    min-height: calc(100vh - 104px);
+  }
+
+  .portfolio-section {
+    min-height: calc(100vh - 104px);
   }
 
   .cert-grid,
@@ -638,14 +870,32 @@ p {
 }
 
 @media (max-width: 620px) {
-  .portfolio-body {
-    padding: 24px 14px;
+  .portfolio-sidebar {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 10px 12px 6px;
+  }
+
+  .portfolio-sidebar .Profile-card,
+  .portfolio-sidebar .profile-name,
+  .portfolio-sidebar .profile-role {
+    text-align: center;
+  }
+
+  .side-nav {
+    grid-column: 1;
+    margin: 0;
+    padding: 0 0 4px;
+  }
+
+  .portfolio-main,
+  .portfolio-section {
+    min-height: calc(100vh - 138px);
   }
 
   .portfolio-section,
-  .hero,
   .section {
-    padding: 22px 18px;
+    padding: 22px 16px;
   }
 
   .metrics {
